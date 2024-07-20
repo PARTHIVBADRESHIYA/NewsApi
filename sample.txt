@@ -1,0 +1,44 @@
+import './App.css';
+import React, { Component,useState} from'react'
+import Navbar from './Components/Navbar';
+import News from './Components/News';
+ 
+import {
+  BrowserRouter as Router,
+  Switch ,
+  Route,
+} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
+
+
+
+export default class App extends Component {
+  pageSize=5;
+  render() {
+    return (
+      
+      <div>             
+        <Router>
+          <Navbar/>
+          <LoadingBar
+        height={3}
+        color='#f11946'
+        progress={10} 
+      />
+         
+         <Switch>
+         <Route exact path="/"><News  key="general"  pageSize={this.pageSize}  country="in" category="general"/></Route> 
+          <Route exact path="/business"><News  key="business"  pageSize={this.pageSize} country="in" category="business"/></Route> 
+          <Route exact path="/entertainment"><News  key="entertainment"  pageSize={this.pageSize} country="in" category="entertainment"/></Route> 
+          <Route exact path="/general"><News  key="general"  country="in"  pageSize={this.pageSize} category="general"/></Route> 
+          <Route exact path="/health"><News  key="health" country="in"  pageSize={this.pageSize} category="health"/></Route> 
+          <Route exact path="/science"><News  key="science"  country="in"  pageSize={this.pageSize} category="science"/></Route> 
+          <Route exact path="/sports"><News  key="sports" country="in"  pageSize={this.pageSize} category="sports"/></Route> 
+          <Route exact path="/technology"><News  key="technology" country="in"  pageSize={this.pageSize} category="technology"/></Route> 
+        </Switch>
+     </Router>
+      </div>
+    )
+  }
+}
+  
